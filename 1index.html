@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>HKG Vietnam - Golf Goods Collection</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F7F9FC;--bg-card:#FFF;--border:#E2E8F0;--accent:#1B4F72;--accent-light:#2E86C1;--accent-softer:#D4E6F1;--accent-warm:#C9A84C;--text:#1A2332;--text-muted:#5A6B7F;--text-dim:#8FA0B5;--text-light:#B0BEC5;--danger:#E74C3C;--shadow-sm:0 1px 3px rgba(27,79,114,.06);--shadow-md:0 4px 16px rgba(27,79,114,.08);--shadow-lg:0 8px 32px rgba(27,79,114,.1);--shadow-hover:0 12px 40px rgba(27,79,114,.14);--font-d:'Playfair Display',Georgia,serif;--font-b:'DM Sans','Helvetica Neue',sans-serif;--r:12px;--rs:8px}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:var(--font-b);-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.6;-webkit-tap-highlight-color:transparent}
+
+/* HEADER */
+.header{padding:14px 20px;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;gap:10px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.logo-icon{width:36px;height:36px;background:var(--accent);border-radius:9px;display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--font-d);font-size:15px;font-weight:600}
+.logo-text{font-family:var(--font-d);font-size:15px;font-weight:500;color:var(--accent)}
+.logo-text .sub{font-family:var(--font-b);font-size:9px;color:var(--text-dim);letter-spacing:1.5px;text-transform:uppercase;display:block;margin-top:1px}
+.header-right{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.nav-tabs{display:flex;gap:4px}
+.nav-tab{background:transparent;border:none;font-family:var(--font-b);font-size:13px;font-weight:500;color:var(--text-muted);padding:7px 14px;border-radius:20px;cursor:pointer;transition:all .2s}
+.nav-tab:hover{color:var(--accent);background:var(--accent-softer)}
+.nav-tab.active{background:var(--accent);color:#fff}
+
+/* BUTTONS */
+.btn{font-family:var(--font-b);font-size:12px;font-weight:500;padding:8px 14px;border-radius:var(--rs);cursor:pointer;transition:all .2s;border:none;display:inline-flex;align-items:center;gap:5px;user-select:none;touch-action:manipulation}
+.btn-primary{background:var(--accent);color:#fff}.btn-primary:hover{background:#164060}.btn-primary:active{transform:scale(.97)}
+.btn-outline{background:transparent;border:1px solid var(--border);color:var(--text-muted)}.btn-outline:hover{border-color:var(--accent-light);color:var(--accent);background:var(--accent-softer)}
+.btn-accent{background:var(--accent-warm);color:#fff}.btn-accent:hover{background:#b89640}.btn-accent:active{transform:scale(.97)}
+.btn-login{background:transparent;border:1.5px solid var(--accent);color:var(--accent);font-weight:500}.btn-login:hover{background:var(--accent);color:#fff}
+body.admin .btn-login{background:var(--accent);color:#fff}
+.btn-danger{background:var(--danger);color:#fff}
+.btn-download{background:linear-gradient(135deg,#27ae60,#2ecc71);color:#fff;font-weight:600;font-size:12px;gap:6px}
+.btn-download:hover{background:linear-gradient(135deg,#219a52,#27ae60);transform:translateY(-1px);box-shadow:0 4px 12px rgba(39,174,96,.3)}
+.admin-only{display:none !important}
+body.admin .admin-only{display:flex !important}
+
+/* HERO */
+.hero{background:linear-gradient(165deg,#E8F0FE 0%,#F0F4F8 40%,#FAFBFD 100%);padding:48px 20px 36px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-60%;right:-20%;width:500px;height:500px;background:radial-gradient(circle,rgba(27,79,114,.04) 0%,transparent 70%);border-radius:50%}
+.hero-eyebrow{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--accent-light);margin-bottom:12px;font-weight:500;position:relative;z-index:1;opacity:0;animation:fadeUp .7s ease .1s forwards}
+.hero h1{font-family:var(--font-d);font-size:clamp(26px,6vw,46px);font-weight:500;line-height:1.2;margin-bottom:12px;color:var(--accent);position:relative;z-index:1;opacity:0;animation:fadeUp .7s ease .25s forwards}
+.hero h1 em{font-style:italic;color:var(--accent-warm)}
+.hero-desc{max-width:420px;margin:0 auto;font-size:14px;line-height:1.7;color:var(--text-muted);position:relative;z-index:1;opacity:0;animation:fadeUp .7s ease .4s forwards}
+.hero-divider{width:36px;height:2px;background:linear-gradient(to right,var(--accent-warm),var(--accent-light));margin:20px auto 0;border-radius:2px;position:relative;z-index:1;opacity:0;animation:fadeUp .7s ease .5s forwards}
+
+/* SLOGAN */
+.slogan-banner{background:linear-gradient(135deg,#1B4F72 0%,#2E86C1 100%);padding:28px 20px;text-align:center;position:relative;overflow:hidden}
+.slogan-main{font-family:var(--font-d);font-size:clamp(17px,4vw,26px);font-weight:500;color:#fff;margin-bottom:7px;position:relative;z-index:1}
+.slogan-main em{font-style:italic;color:rgba(201,168,76,.95)}
+.slogan-sub{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.6);position:relative;z-index:1}
+.slogan-deco{display:flex;justify-content:center;gap:14px;margin-top:13px;flex-wrap:wrap;position:relative;z-index:1}
+.slogan-deco span{font-size:11px;color:rgba(255,255,255,.7);display:flex;align-items:center;gap:4px}
+.slogan-deco span::before{content:'✦';color:var(--accent-warm);font-size:9px}
+
+/* STATS */
+.stats-strip{display:flex;justify-content:center;background:#fff;border-bottom:1px solid var(--border);flex-wrap:wrap}
+.stat-item{flex:1;min-width:100px;padding:18px 12px;text-align:center;border-right:1px solid var(--border);transition:background .2s}
+.stat-item:last-child{border-right:none}
+.stat-item:hover{background:var(--accent-softer)}
+.stat-num{font-family:var(--font-d);font-size:24px;font-weight:600;color:var(--accent);display:block;line-height:1}
+.stat-label{font-size:10px;color:var(--text-dim);letter-spacing:1px;text-transform:uppercase;margin-top:4px;display:block}
+
+/* REGION TABS */
+.region-tabs{display:flex;gap:6px;padding:14px 20px;overflow-x:auto;-webkit-overflow-scrolling:touch;background:#fff;border-bottom:1px solid var(--border);scrollbar-width:none}
+.region-tabs::-webkit-scrollbar{display:none}
+.region-tab{background:transparent;border:1.5px solid var(--border);color:var(--text-muted);font-family:var(--font-b);font-size:13px;font-weight:500;padding:7px 16px;border-radius:24px;cursor:pointer;transition:all .25s;white-space:nowrap;flex-shrink:0}
+.region-tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.tab-count{font-size:10px;font-weight:600;margin-left:3px;opacity:.7}
+
+/* GRID */
+.grid-container{padding:24px 20px 60px}
+.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px;max-width:1360px;margin:0 auto}
+.product-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;position:relative;transition:all .3s;box-shadow:var(--shadow-sm);opacity:0;transform:translateY(16px);animation:cardIn .4s ease forwards}
+@keyframes cardIn{to{opacity:1;transform:translateY(0)}}
+.product-card.dragging{opacity:.4;box-shadow:var(--shadow-lg);z-index:50}
+.product-card.drag-over{border-color:var(--accent-light);border-style:dashed}
+.card-image{width:100%;aspect-ratio:1;overflow:hidden;background:linear-gradient(135deg,#F0F4F8,#E8ECF0);position:relative}
+.card-image img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;background:linear-gradient(135deg,#F0F4F8,#E2E8F0)}
+.placeholder-icon{width:40px;height:40px;border:1.5px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--text-light);font-size:16px}
+.placeholder-text{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-light)}
+.card-badge{position:absolute;top:8px;left:8px;background:var(--accent-warm);color:#fff;font-size:9px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:4px 8px;border-radius:5px;z-index:2}
+.card-actions-overlay{position:absolute;top:8px;right:8px;display:none !important;gap:4px;z-index:2}
+body.admin .card-actions-overlay{display:flex !important}
+.card-action-btn{width:28px;height:28px;background:rgba(255,255,255,.92);border:1px solid var(--border);border-radius:6px;color:var(--text-muted);font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.card-sort-handle{position:absolute;bottom:8px;right:8px;display:none !important;width:28px;height:28px;background:rgba(255,255,255,.92);border:1px solid var(--border);border-radius:6px;color:var(--text-light);font-size:14px;cursor:grab;align-items:center;justify-content:center;z-index:3;touch-action:none}
+body.admin .card-sort-handle{display:flex !important}
+.card-body{padding:12px 14px 14px}
+.card-region{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--accent-light);margin-bottom:3px;font-weight:600}
+.card-title{font-family:var(--font-d);font-size:15px;font-weight:500;margin-bottom:4px;line-height:1.3;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.card-desc{font-size:11px;line-height:1.5;color:var(--text-muted);margin-bottom:10px;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+.card-footer{display:flex;align-items:flex-end;justify-content:space-between;padding-top:10px;border-top:1px solid var(--border)}
+.price-vnd{font-family:var(--font-d);font-size:16px;font-weight:500;color:var(--accent)}
+.price-vnd .cur,.price-krw .cur{font-size:10px;color:var(--text-dim)}
+.price-krw{font-size:10px;color:var(--text-dim)}
+
+/* KAKAO CONTACT SECTION */
+.kakao-section{background:#fff;border-top:1px solid var(--border);padding:36px 20px;text-align:center}
+.kakao-btn{display:inline-flex;align-items:center;gap:10px;padding:16px 36px;background:#FEE500;color:#3A1D1D;font-family:var(--font-b);font-size:16px;font-weight:700;border-radius:50px;text-decoration:none;transition:all .25s;box-shadow:0 4px 20px rgba(254,229,0,.5);border:none;cursor:pointer}
+.kakao-btn:hover{background:#f0d800;transform:translateY(-2px);box-shadow:0 8px 28px rgba(254,229,0,.55)}
+.kakao-btn:active{transform:scale(.97)}
+.kakao-btn svg{flex-shrink:0}
+.kakao-label{font-size:12px;color:var(--text-dim);margin-bottom:16px;letter-spacing:1px;text-transform:uppercase}
+.kakao-company{font-family:var(--font-d);font-size:15px;font-weight:500;color:var(--accent);margin-top:14px}
+
+/* BOARD */
+.board-section{padding:32px 20px 60px;max-width:900px;margin:0 auto}
+.board-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px;flex-wrap:wrap;gap:10px}
+.board-title{font-family:var(--font-d);font-size:22px;font-weight:500;color:var(--accent)}
+.board-title span{font-size:11px;color:var(--text-dim);font-family:var(--font-b);margin-left:8px;letter-spacing:1px;text-transform:uppercase}
+.board-write-btn{background:var(--accent);color:#fff;border:none;padding:10px 18px;border-radius:var(--rs);font-family:var(--font-b);font-size:13px;font-weight:500;cursor:pointer;display:flex;align-items:center;gap:6px;transition:background .2s}
+.board-write-btn:hover{background:#164060}
+.post-list{border:1px solid var(--border);border-radius:var(--r);overflow:hidden;background:#fff}
+.post-item{padding:14px 18px;border-bottom:1px solid var(--border);cursor:pointer;transition:background .2s;display:flex;align-items:center;gap:14px}
+.post-item:last-child{border-bottom:none}
+.post-item:hover{background:var(--bg)}
+.post-item.pinned{background:linear-gradient(to right,rgba(201,168,76,.04),transparent)}
+.post-pin{font-size:10px;color:var(--accent-warm);font-weight:700;letter-spacing:1px;flex-shrink:0;min-width:28px}
+.post-main{flex:1;min-width:0}
+.post-title-text{font-size:14px;font-weight:500;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:3px}
+.post-meta{font-size:11px;color:var(--text-dim);display:flex;gap:10px;flex-wrap:wrap}
+.post-views{font-size:11px;color:var(--text-light);flex-shrink:0}
+.board-empty{text-align:center;padding:48px 20px;color:var(--text-dim);font-size:13px}
+.board-empty .e-icon{font-size:36px;display:block;margin-bottom:10px}
+.board-pagination{display:flex;justify-content:center;gap:6px;margin-top:18px;flex-wrap:wrap}
+.page-btn{width:34px;height:34px;border:1.5px solid var(--border);border-radius:var(--rs);background:#fff;color:var(--text-muted);font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.page-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.page-btn:hover:not(.active){background:var(--accent-softer);border-color:var(--accent-light);color:var(--accent)}
+
+/* MODALS */
+.overlay{display:none;position:fixed;inset:0;background:rgba(26,35,50,.5);z-index:1000;align-items:flex-end;justify-content:center;backdrop-filter:blur(6px)}
+.overlay.open{display:flex}
+.overlay.center{align-items:center;padding:20px}
+.modal-box{background:#fff;border-radius:var(--r) var(--r) 0 0;max-width:600px;width:100%;max-height:92vh;overflow-y:auto;-webkit-overflow-scrolling:touch;position:relative;box-shadow:var(--shadow-lg);animation:slideUp .3s ease}
+.modal-box.center-box{border-radius:var(--r);max-width:420px}
+.modal-box.wide{max-width:860px}
+@keyframes slideUp{from{transform:translateY(40px);opacity:0}to{transform:translateY(0);opacity:1}}
+.modal-close{position:absolute;top:12px;right:12px;background:var(--bg);border:1px solid var(--border);border-radius:7px;color:var(--text-muted);font-size:18px;cursor:pointer;z-index:2;width:32px;height:32px;display:flex;align-items:center;justify-content:center}
+.modal-image{width:100%;aspect-ratio:1;overflow:hidden;background:linear-gradient(135deg,#F0F4F8,#E2E8F0)}
+.modal-image img{width:100%;height:100%;object-fit:cover}
+.modal-content{padding:22px 20px 32px}
+.modal-region{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--accent-light);margin-bottom:6px;font-weight:600}
+.modal-title{font-family:var(--font-d);font-size:22px;font-weight:500;margin-bottom:10px;color:var(--accent)}
+.modal-desc{font-size:14px;line-height:1.7;color:var(--text-muted);margin-bottom:14px}
+.modal-prices{margin-bottom:14px}
+.modal-price-vnd{font-family:var(--font-d);font-size:24px;font-weight:500;color:var(--accent)}
+.modal-price-vnd .cur{font-size:13px;color:var(--text-dim)}
+.modal-price-krw{font-size:13px;color:var(--text-dim)}
+.modal-meta{display:flex;flex-direction:column;gap:7px;padding-top:14px;border-top:1px solid var(--border)}
+.modal-meta-row{display:flex;justify-content:space-between;font-size:12px}
+.modal-meta-label{color:var(--text-dim);letter-spacing:1.5px;text-transform:uppercase;font-weight:500}
+.modal-meta-value{color:var(--text-muted)}
+
+/* FORMS */
+.form-pad{padding:26px 20px 36px}
+.form-pad h2{font-family:var(--font-d);font-size:21px;font-weight:500;color:var(--accent);margin-bottom:3px}
+.form-sub{font-size:12px;color:var(--text-dim);margin-bottom:18px}
+.form-group{margin-bottom:14px}
+.form-group label{display:block;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--text-dim);margin-bottom:5px;font-weight:600}
+.form-group input,.form-group select,.form-group textarea{width:100%;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--rs);color:var(--text);font-family:var(--font-b);font-size:15px;padding:11px 13px;outline:none;transition:border-color .2s;-webkit-appearance:none}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--accent-light)}
+.form-group textarea{resize:vertical;min-height:100px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.form-actions{display:flex;gap:8px;margin-top:18px}
+.btn-save{flex:1}
+.upload-area{border:2px dashed var(--border);border-radius:var(--r);padding:18px;text-align:center;cursor:pointer;position:relative;min-height:80px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:var(--bg);transition:border-color .2s}
+.upload-area:hover{border-color:var(--accent-light)}
+.upload-area.has-image{padding:5px}
+.upload-area img{max-width:100%;max-height:150px;object-fit:contain;border-radius:var(--rs)}
+.upload-area .u-icon{font-size:22px;color:var(--text-light)}
+.upload-area .u-text{font-size:12px;color:var(--text-dim)}
+.upload-area .u-hint{font-size:10px;color:var(--text-light)}
+.upload-area input[type="file"]{position:absolute;inset:0;opacity:0;cursor:pointer}
+.bulk-preview{display:grid;grid-template-columns:repeat(auto-fill,minmax(72px,1fr));gap:6px;margin:8px 0}
+.bulk-preview-item{position:relative;aspect-ratio:1;overflow:hidden;border:1px solid var(--border);border-radius:var(--rs)}
+.bulk-preview-item img{width:100%;height:100%;object-fit:cover}
+.bulk-preview-item .bp-remove{position:absolute;top:3px;right:3px;width:18px;height:18px;background:rgba(0,0,0,.5);border:none;color:#fff;font-size:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;border-radius:50%}
+.bulk-count{font-size:12px;color:var(--text-muted);margin:5px 0 10px;font-weight:500}
+.post-img-upload-area{border:2px dashed var(--border);border-radius:var(--r);padding:14px;text-align:center;cursor:pointer;position:relative;min-height:64px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:4px;background:var(--bg);transition:border-color .2s}
+.post-img-upload-area:hover{border-color:var(--accent-light)}
+.post-img-upload-area input[type="file"]{position:absolute;inset:0;opacity:0;cursor:pointer}
+.post-img-preview{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.post-img-thumb{position:relative;width:68px;height:68px;border-radius:var(--rs);overflow:hidden;border:1px solid var(--border)}
+.post-img-thumb img{width:100%;height:100%;object-fit:cover}
+.post-img-thumb .rm{position:absolute;top:2px;right:2px;width:18px;height:18px;background:rgba(0,0,0,.55);border:none;color:#fff;font-size:10px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center}
+
+/* POST DETAIL */
+.post-d-cat{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--accent-light);font-weight:600;margin-bottom:6px}
+.post-d-title{font-family:var(--font-d);font-size:21px;font-weight:500;color:var(--text);margin-bottom:10px;line-height:1.35}
+.post-d-meta{font-size:12px;color:var(--text-dim);display:flex;gap:12px;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--border);flex-wrap:wrap;align-items:center}
+.post-d-body{font-size:14px;line-height:1.9;color:var(--text-muted);white-space:pre-wrap;word-break:break-word}
+.post-d-images{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0}
+.post-d-images img{width:100%;max-width:240px;border-radius:var(--rs);cursor:pointer;border:1px solid var(--border);transition:transform .2s;object-fit:cover}
+.post-d-images img:hover{transform:scale(1.02)}
+.comment-section{margin-top:26px;padding-top:22px;border-top:1px solid var(--border)}
+.comment-section h4{font-size:12px;font-weight:600;color:var(--text-muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:14px}
+.comment-list{display:flex;flex-direction:column;gap:10px;margin-bottom:18px}
+.comment-item{background:var(--bg);border-radius:var(--rs);padding:11px 13px}
+.comment-head{display:flex;justify-content:space-between;margin-bottom:5px;align-items:center}
+.comment-author{font-size:12px;font-weight:600;color:var(--text)}
+.comment-date{font-size:11px;color:var(--text-dim);display:flex;align-items:center;gap:4px}
+.comment-body{font-size:13px;color:var(--text-muted);line-height:1.6;white-space:pre-wrap;word-break:break-word}
+.comment-del-btn{font-size:10px;color:var(--danger);background:none;border:none;cursor:pointer;display:none;padding:0 2px}
+body.admin .comment-del-btn{display:inline}
+.comment-form{display:flex;flex-direction:column;gap:9px}
+.comment-form input,.comment-form textarea{background:var(--bg);border:1.5px solid var(--border);border-radius:var(--rs);padding:10px 12px;font-family:var(--font-b);font-size:14px;color:var(--text);outline:none;transition:border-color .2s;-webkit-appearance:none;width:100%}
+.comment-form input:focus,.comment-form textarea:focus{border-color:var(--accent-light)}
+.comment-form textarea{resize:vertical;min-height:64px}
+.comment-form-row{display:flex;gap:8px}
+.confirm-box{padding:30px 22px;text-align:center}
+.confirm-box p{font-size:14px;color:var(--text-muted);margin-bottom:18px;line-height:1.6}
+.confirm-actions{display:flex;gap:8px;justify-content:center}
+.login-box{padding:34px 22px;text-align:center}
+.login-box h2{font-family:var(--font-d);font-size:21px;font-weight:500;color:var(--accent);margin-bottom:14px}
+.login-box input{width:100%;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--rs);color:var(--text);font-family:var(--font-b);font-size:17px;padding:13px;outline:none;margin-bottom:12px;text-align:center;letter-spacing:4px;-webkit-appearance:none}
+.login-box input:focus{border-color:var(--accent-light)}
+.login-box .login-submit{width:100%}
+.login-err{color:var(--danger);font-size:12px;margin-top:7px;display:none}
+
+/* LIGHTBOX */
+.lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:9999;align-items:center;justify-content:center}
+.lightbox.open{display:flex}
+.lightbox img{max-width:94vw;max-height:90vh;border-radius:var(--rs);object-fit:contain}
+.lightbox-close{position:absolute;top:16px;right:20px;color:#fff;font-size:30px;cursor:pointer;background:none;border:none;line-height:1}
+
+/* TOAST */
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--accent);color:#fff;font-size:13px;font-weight:500;padding:11px 22px;border-radius:var(--r);z-index:9990;box-shadow:var(--shadow-md);transition:transform .35s cubic-bezier(.25,.46,.45,.94);pointer-events:none;white-space:nowrap}
+.toast.show{transform:translateX(-50%) translateY(0)}
+.empty-state{grid-column:1/-1;text-align:center;padding:56px 20px}
+.empty-state .e-icon{font-size:38px;color:var(--text-light);margin-bottom:10px}
+.empty-state p{color:var(--text-dim);font-size:13px}
+footer{border-top:1px solid var(--border);padding:22px 20px;text-align:center;background:#fff}
+footer p{font-size:10px;letter-spacing:1.5px;color:var(--text-dim)}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(min-width:769px){
+  .header{padding:18px 48px}
+  .hero{padding:60px 48px 44px}
+  .region-tabs{justify-content:center;padding:18px 48px 12px}
+  .grid-container{padding:28px 48px 60px}
+  .product-grid{grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px}
+  .card-image{aspect-ratio:4/5}
+  .card-title{font-size:17px;white-space:normal}
+  .card-desc{-webkit-line-clamp:2;font-size:12px}
+  .card-body{padding:16px}
+  .price-vnd{font-size:18px}
+  .overlay{align-items:center}
+  .modal-box{border-radius:var(--r)}
+  .modal-box.product-modal{display:grid;grid-template-columns:1fr 1fr;max-width:840px}
+  .modal-image{aspect-ratio:4/5;border-radius:var(--r) 0 0 var(--r)}
+  .board-section{padding:38px 48px 60px}
+  .product-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover)}
+  .slogan-banner{padding:34px 48px}
+  .kakao-section{padding:44px 48px}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="logo">
+    <div class="logo-icon">H</div>
+    <div class="logo-text">(주)에이치케이지<span class="sub">Vietnam · Golf Goods</span></div>
+  </div>
+  <div class="header-right">
+    <div class="nav-tabs">
+      <button class="nav-tab active" id="tab-shop" onclick="switchPage('shop')">🏌️ 굿즈</button>
+      <button class="nav-tab" id="tab-board" onclick="switchPage('board')">💬 자유게시판</button>
+    </div>
+    <button class="btn btn-login" onclick="handleLoginToggle()">관리자</button>
+    <div class="admin-only" style="gap:5px">
+      <button class="btn btn-download" onclick="downloadHTML()">⬇ HTML 저장</button>
+      <button class="btn btn-outline" onclick="importBackup()">복원</button>
+      <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
+      <button class="btn btn-accent" onclick="openBulk()">📷 일괄</button>
+      <button class="btn btn-primary" onclick="openForm()">＋ 등록</button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-eyebrow">Premium Golf Lifestyle</p>
+  <h1>HKG Vietnam <em>Collection</em></h1>
+  <p class="hero-desc">프리미엄 골프 라이프스타일을 담은 공식 굿즈 컬렉션</p>
+  <div class="hero-divider"></div>
+</section>
+
+<!-- SLOGAN -->
+<div class="slogan-banner reveal">
+  <p class="slogan-main">고객의 만족이 <em>우리의 존재 이유</em>입니다</p>
+  <p class="slogan-sub">Your Satisfaction is the Reason for Our Existence</p>
+  <div class="slogan-deco">
+    <span>프리미엄 품질</span>
+    <span>신뢰할 수 있는 서비스</span>
+    <span>고객 중심 경영</span>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-strip reveal">
+  <div class="stat-item"><span class="stat-num" id="statProducts">0</span><span class="stat-label">등록 상품</span></div>
+  <div class="stat-item"><span class="stat-num">6</span><span class="stat-label">베트남 지역</span></div>
+  <div class="stat-item"><span class="stat-num" id="statPosts">0</span><span class="stat-label">게시글</span></div>
+  <div class="stat-item"><span class="stat-num">100%</span><span class="stat-label">고객 만족</span></div>
+</div>
+
+<!-- SHOP PAGE -->
+<div id="page-shop">
+  <div class="region-tabs" id="regionTabs"></div>
+  <div class="grid-container"><div class="product-grid" id="productGrid"></div></div>
+</div>
+
+<!-- BOARD PAGE -->
+<div id="page-board" style="display:none">
+  <div class="board-section">
+    <div class="board-header">
+      <p class="board-title">자유게시판 <span>FREE BOARD</span></p>
+      <button class="board-write-btn" onclick="openWrite()">✏️ 글쓰기</button>
+    </div>
+    <div class="post-list" id="postList"></div>
+    <div class="board-pagination" id="boardPagination"></div>
+  </div>
+</div>
+
+<!-- KAKAO CONTACT -->
+<section class="kakao-section reveal">
+  <p class="kakao-label">카카오톡 채널로 문의하세요</p>
+  <a href="http://pf.kakao.com/_uxdhxjn/chat" target="_blank" rel="noopener" class="kakao-btn">
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+      <ellipse cx="11" cy="10" rx="10" ry="8.5" fill="#3A1D1D"/>
+      <path d="M6.5 13.5L8.2 9L11 15L13.8 9L15.5 13.5" stroke="#FEE500" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    </svg>
+    지금 바로 접속하기
+  </a>
+  <p class="kakao-company">(주)에이치케이지 베트남 법인</p>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+  <img id="lightboxImg" src="" alt="">
+</div>
+
+<!-- PRODUCT DETAIL -->
+<div class="overlay" id="detailOverlay">
+  <div class="modal-box product-modal wide">
+    <button class="modal-close" onclick="closeDetail()">&times;</button>
+    <div class="modal-image" id="detailImage"></div>
+    <div class="modal-content" id="detailContent"></div>
+  </div>
+</div>
+
+<!-- PRODUCT FORM -->
+<div class="overlay" id="formOverlay">
+  <div class="modal-box">
+    <div class="form-pad">
+      <button class="modal-close" onclick="closeForm()">&times;</button>
+      <h2 id="formTitle">상품 등록</h2><p class="form-sub">상품 정보를 입력해 주세요</p>
+      <input type="hidden" id="editId">
+      <div class="form-group"><label>상품 이미지</label><div class="upload-area" id="uploadArea"><div class="u-icon">🏌️</div><div class="u-text">이미지 업로드</div><div class="u-hint">JPG, PNG, WEBP</div><input type="file" id="imageInput" accept="image/*" onchange="handleImage(event)"></div></div>
+      <div class="form-group"><label>상품명</label><input type="text" id="fName" placeholder="상품 이름"></div>
+      <div class="form-group"><label>지역</label><select id="fRegion"><option>박닌</option><option>하이퐁</option><option>남호이안</option><option>나트랑</option><option>달랏</option><option>푸꾸옥</option></select></div>
+      <div class="form-row"><div class="form-group"><label>VND ₫</label><input type="number" id="fVND" placeholder="500000"></div><div class="form-group"><label>KRW ₩</label><input type="number" id="fKRW" placeholder="28000"></div></div>
+      <div class="form-group"><label>설명</label><textarea id="fDesc" placeholder="상품 설명"></textarea></div>
+      <div class="form-group"><label>뱃지</label><input type="text" id="fBadge" placeholder="NEW, BEST 등"></div>
+      <div class="form-group"><label>추가 정보</label><input type="text" id="fMeta" placeholder="사이즈:Free, 소재:코튼"></div>
+      <div class="form-actions"><button class="btn btn-outline" onclick="closeForm()">취소</button><button class="btn btn-primary btn-save" onclick="saveProduct()">저장</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- BULK -->
+<div class="overlay" id="bulkOverlay">
+  <div class="modal-box">
+    <div class="form-pad">
+      <button class="modal-close" onclick="closeBulk()">&times;</button>
+      <h2>📷 일괄 등록</h2><p class="form-sub">이미지 여러 개 → 해당 지역에 한 번에 등록</p>
+      <div class="form-group"><label>지역</label><select id="bulkRegion"><option>박닌</option><option>하이퐁</option><option>남호이안</option><option>나트랑</option><option>달랏</option><option>푸꾸옥</option></select></div>
+      <div class="upload-area"><div class="u-icon">📷</div><div class="u-text">이미지 여러 개 선택</div><input type="file" id="bulkInput" accept="image/*" multiple onchange="handleBulkImages(event)"></div>
+      <div class="bulk-count" id="bulkCount"></div>
+      <div class="bulk-preview" id="bulkPreview"></div>
+      <div class="form-row"><div class="form-group"><label>VND</label><input type="number" id="bulkVND" placeholder="0"></div><div class="form-group"><label>KRW</label><input type="number" id="bulkKRW" placeholder="0"></div></div>
+      <div class="form-actions"><button class="btn btn-outline" onclick="closeBulk()">취소</button><button class="btn btn-primary btn-save" onclick="saveBulk()">전체 등록</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- LOGIN -->
+<div class="overlay center" id="loginOverlay">
+  <div class="modal-box center-box">
+    <div class="login-box">
+      <button class="modal-close" onclick="closeLogin()">&times;</button>
+      <h2>관리자 로그인</h2>
+      <input type="password" id="adminPw" placeholder="비밀번호" onkeydown="if(event.key==='Enter')doLogin()">
+      <button class="btn btn-primary login-submit" onclick="doLogin()">로그인</button>
+      <p class="login-err" id="loginErr">비밀번호가 올바르지 않습니다</p>
+    </div>
+  </div>
+</div>
+
+<!-- CONFIRM -->
+<div class="overlay center" id="confirmOverlay">
+  <div class="modal-box center-box">
+    <div class="confirm-box">
+      <p id="confirmMsg">이 항목을 삭제하시겠습니까?</p>
+      <div class="confirm-actions">
+        <button class="btn btn-outline" onclick="closeConfirm()">취소</button>
+        <button class="btn btn-danger" id="confirmYes">삭제</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WRITE POST -->
+<div class="overlay" id="writeOverlay">
+  <div class="modal-box">
+    <div class="form-pad">
+      <button class="modal-close" onclick="closeWrite()">&times;</button>
+      <h2 id="writeTitle">글쓰기</h2><p class="form-sub">자유롭게 의견을 나눠보세요</p>
+      <div class="form-group"><label>말머리</label><select id="wCat"><option>일반</option><option>공지</option><option>문의</option><option>후기</option><option>정보</option></select></div>
+      <div class="form-group"><label>제목</label><input type="text" id="wTitle" placeholder="제목을 입력하세요" maxlength="100"></div>
+      <div class="form-group"><label>작성자</label><input type="text" id="wAuthor" placeholder="이름 또는 닉네임" maxlength="30"></div>
+      <div class="form-group"><label>내용</label><textarea id="wBody" placeholder="내용을 입력하세요" style="min-height:140px"></textarea></div>
+      <div class="form-group">
+        <label>사진 첨부 <span style="font-size:10px;color:var(--text-light)">(최대 5장)</span></label>
+        <div class="post-img-upload-area"><div class="u-icon">📷</div><div class="u-text">사진을 선택하세요</div><div class="u-hint">JPG, PNG, WEBP</div><input type="file" id="wImages" accept="image/*" multiple onchange="handlePostImages(event)"></div>
+        <div class="post-img-preview" id="postImgPreview"></div>
+      </div>
+      <div class="form-group"><label>비밀번호 <span style="font-size:10px;color:var(--text-light)">(수정/삭제용)</span></label><input type="password" id="wPw" placeholder="4~8자리"></div>
+      <div class="form-actions"><button class="btn btn-outline" onclick="closeWrite()">취소</button><button class="btn btn-primary btn-save" onclick="savePost()">등록</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- POST DETAIL -->
+<div class="overlay" id="postDetailOverlay">
+  <div class="modal-box" style="max-width:700px">
+    <div class="form-pad" id="postDetailContent"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<footer><p>&copy; 2026 (주)에이치케이지 베트남 법인</p></footer>
+
+<script>
+const ADMIN_PW = '1234';
+const KAKAO_URL = 'http://pf.kakao.com/_uxdhxjn/chat';
+const REGIONS   = ['전체','박닌','하이퐁','남호이안','나트랑','달랏','푸꾸옥'];
+const PER_PAGE  = 10;
+
+let products=[], posts=[], activeRegion='전체', isAdmin=false;
+let uploadedImg='', bulkFiles=[], postImages=[];
+let currentPage=1, currentPostId=null, editingPostId=null, confirmCb=null;
+let dragSrcId=null, touchDragId=null;
+
+const $  = id => document.getElementById(id);
+const esc = s => { if(!s)return''; const d=document.createElement('div'); d.textContent=s; return d.innerHTML; };
+const fV  = n => Number(n||0).toLocaleString('vi-VN');
+const fK  = n => Number(n||0).toLocaleString('ko-KR');
+const fD  = ts => { const d=new Date(ts); return `${d.getFullYear()}.${String(d.getMonth()+1).padStart(2,'0')}.${String(d.getDate()).padStart(2,'0')} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`; };
+const nid = arr => arr.length ? Math.max(...arr.map(p=>p.id||0))+1 : 1;
+
+function toast(msg){ const t=$('toast'); t.textContent=msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2400); }
+
+/* IMAGE RESIZE */
+function resizeImage(dataUrl,maxW=800){
+  return new Promise(resolve=>{
+    if(!dataUrl||!dataUrl.startsWith('data:image')){resolve(dataUrl);return;}
+    const img=new Image();
+    img.onload=()=>{
+      let w=img.width,h=img.height;
+      if(w<=maxW){resolve(dataUrl);return;}
+      const r=maxW/w; w=maxW; h=Math.round(h*r);
+      const c=document.createElement('canvas'); c.width=w; c.height=h;
+      c.getContext('2d').drawImage(img,0,0,w,h);
+      resolve(c.toDataURL('image/jpeg',0.82));
+    };
+    img.onerror=()=>resolve(dataUrl);
+    img.src=dataUrl;
+  });
+}
+
+/* STORAGE */
+const DB_NAME='hkg_v3_db', DB_VER=1;
+function openDB(){
+  return new Promise((ok,fail)=>{
+    try{
+      const r=indexedDB.open(DB_NAME,DB_VER);
+      r.onupgradeneeded=e=>{ const db=e.target.result; if(!db.objectStoreNames.contains('kv')) db.createObjectStore('kv',{keyPath:'k'}); };
+      r.onsuccess=e=>ok(e.target.result); r.onerror=()=>fail();
+    }catch(e){fail(e);}
+  });
+}
+async function dbSet(key,val){ try{ const db=await openDB(); const tx=db.transaction('kv','readwrite'); tx.objectStore('kv').put({k:key,v:val}); await new Promise((ok,f)=>{tx.oncomplete=ok;tx.onerror=f;}); }catch(e){} }
+async function dbGet(key){ try{ const db=await openDB(); const tx=db.transaction('kv','readonly'); return new Promise(ok=>{const r=tx.objectStore('kv').get(key); r.onsuccess=()=>ok(r.result?r.result.v:null); r.onerror=()=>ok(null);}); }catch(e){return null;} }
+async function saveAll(){ await dbSet('products',products); await dbSet('posts',posts); try{localStorage.setItem('hkg_posts_bk',JSON.stringify(posts));}catch(e){} }
+async function loadAll(){
+  const p=await dbGet('products'); if(p&&p.length) products=p;
+  const b=await dbGet('posts');
+  if(b&&b.length){ posts=b; }
+  else{ try{ const ls=JSON.parse(localStorage.getItem('hkg_posts_bk')||'[]'); if(ls.length) posts=ls; }catch(e){} }
+}
+
+/* ════ HTML 다운로드 ════ */
+async function downloadHTML(){
+  toast('HTML 생성 중...');
+  // 현재 데이터를 embed한 HTML 생성
+  const html = document.documentElement.outerHTML;
+  // 스크립트 내 EMBEDDED_DATA 교체
+  const dataScript = `\n<script id="__embedded_data__">window.__EMBEDDED__={products:${JSON.stringify(products)},posts:${JSON.stringify(posts)}};<\/script>\n`;
+  // </head> 앞에 삽입
+  const finalHtml = '<!DOCTYPE html>\n' + html.replace('</head>', dataScript + '</head>');
+  const blob = new Blob([finalHtml], {type:'text/html;charset=utf-8'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `hkg_golf_${new Date().toISOString().slice(0,10)}.html`;
+  a.click();
+  URL.revokeObjectURL(a.href);
+  setTimeout(()=>toast('✅ HTML 저장 완료!'),300);
+}
+
+function importBackup(){ $('importFile').click(); }
+async function importData(e){
+  const f=e.target.files[0]; if(!f) return;
+  const r=new FileReader();
+  r.onload=async ev=>{
+    try{
+      const d=JSON.parse(ev.target.result);
+      if(d.products) products=d.products;
+      if(d.posts) posts=d.posts;
+      else if(Array.isArray(d)) products=d;
+      await saveAll(); renderTabs(); renderGrid(); renderBoard(); updateStats(); toast('복원 완료');
+    }catch(err){toast('올바른 파일이 아닙니다');}
+  };
+  r.readAsText(f); e.target.value='';
+}
+
+/* OVERLAY */
+function openOL(id){ $(id).classList.add('open'); document.body.style.overflow='hidden'; }
+function closeOL(id){ $(id).classList.remove('open'); document.body.style.overflow=''; }
+
+/* PAGE SWITCH */
+function switchPage(p){
+  $('page-shop').style.display  = p==='shop'  ? 'block':'none';
+  $('page-board').style.display = p==='board' ? 'block':'none';
+  $('tab-shop').classList.toggle('active',  p==='shop');
+  $('tab-board').classList.toggle('active', p==='board');
+  if(p==='board'){ currentPage=1; renderBoard(); }
+  updateStats();
+}
+
+function updateStats(){ $('statProducts').textContent=products.length; $('statPosts').textContent=posts.length; }
+
+function initReveal(){
+  const obs=new IntersectionObserver(entries=>{ entries.forEach(e=>{ if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);} }); },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+}
+
+/* ADMIN */
+function handleLoginToggle(){
+  if(isAdmin){ isAdmin=false; document.body.classList.remove('admin'); toast('관리자 모드 해제'); return; }
+  openOL('loginOverlay'); $('adminPw').value=''; $('loginErr').style.display='none';
+  setTimeout(()=>$('adminPw').focus(),200);
+}
+function doLogin(){
+  if($('adminPw').value===ADMIN_PW){ isAdmin=true; document.body.classList.add('admin'); closeOL('loginOverlay'); toast('관리자 모드 활성화'); }
+  else $('loginErr').style.display='block';
+}
+function closeLogin(){ closeOL('loginOverlay'); }
+
+/* TABS & GRID */
+function renderTabs(){
+  $('regionTabs').innerHTML = REGIONS.map(r=>{
+    const c=r==='전체'?products.length:products.filter(p=>p.region===r).length;
+    return `<button class="region-tab${r===activeRegion?' active':''}" onclick="switchRegion('${r}')">${r}<span class="tab-count">${c}</span></button>`;
+  }).join('');
+}
+function switchRegion(r){ activeRegion=r; renderTabs(); renderGrid(); }
+
+function onDragStart(e,id){ dragSrcId=id; e.target.closest('.product-card').classList.add('dragging'); if(e.dataTransfer) e.dataTransfer.effectAllowed='move'; }
+function onDragOver(e){ e.preventDefault(); e.target.closest('.product-card')?.classList.add('drag-over'); }
+function onDragLeave(e){ e.target.closest('.product-card')?.classList.remove('drag-over'); }
+async function onDrop(e,tId){
+  e.preventDefault();
+  document.querySelectorAll('.product-card').forEach(c=>c.classList.remove('dragging','drag-over'));
+  if(dragSrcId===null||dragSrcId===tId) return;
+  const si=products.findIndex(p=>p.id===dragSrcId), ti=products.findIndex(p=>p.id===tId);
+  if(si<0||ti<0) return;
+  const[item]=products.splice(si,1); products.splice(ti,0,item);
+  await saveAll(); renderGrid(); toast('순서 변경됨'); dragSrcId=null;
+}
+function onTouchDragStart(e,id){ touchDragId=id; e.target.closest('.product-card').classList.add('dragging'); }
+function onTouchDragMove(e){ if(touchDragId!==null) e.preventDefault(); }
+async function onTouchDragEnd(e){
+  if(touchDragId===null) return;
+  document.querySelectorAll('.product-card').forEach(c=>c.classList.remove('dragging','drag-over'));
+  const el=document.elementFromPoint(e.changedTouches[0].clientX,e.changedTouches[0].clientY);
+  const tc=el?.closest('.product-card');
+  if(tc){ const tid=parseInt(tc.dataset.id); if(tid&&tid!==touchDragId){ const si=products.findIndex(p=>p.id===touchDragId), ti=products.findIndex(p=>p.id===tid); if(si>=0&&ti>=0){const[item]=products.splice(si,1);products.splice(ti,0,item);await saveAll();renderGrid();toast('순서 변경됨');}}}
+  touchDragId=null;
+}
+
+function renderGrid(){
+  const grid=$('productGrid');
+  const list=activeRegion==='전체'?[...products]:products.filter(p=>p.region===activeRegion);
+  if(!list.length){ grid.innerHTML=`<div class="empty-state"><div class="e-icon">🏌️</div><p>${activeRegion==='전체'?'등록된 상품이 없습니다':activeRegion+' 지역에 상품이 없습니다'}</p></div>`; return; }
+  grid.innerHTML=list.map((p,i)=>`
+    <div class="product-card" data-id="${p.id}" style="animation-delay:${Math.min(i*.05,.5)}s"
+      draggable="${isAdmin}" ondragstart="onDragStart(event,${p.id})" ondragover="onDragOver(event)" ondragleave="onDragLeave(event)" ondrop="onDrop(event,${p.id})">
+      ${p.badge?`<span class="card-badge">${esc(p.badge)}</span>`:''}
+      <div class="card-actions-overlay">
+        <button class="card-action-btn" onclick="event.stopPropagation();openForm(${p.id})">✎</button>
+        <button class="card-action-btn del" onclick="event.stopPropagation();confirmDelProduct(${p.id})">✕</button>
+      </div>
+      <div class="card-sort-handle" ontouchstart="onTouchDragStart(event,${p.id})" ontouchmove="onTouchDragMove(event)" ontouchend="onTouchDragEnd(event)">⇅</div>
+      <div class="card-image" onclick="openDetail(${p.id})">
+        ${p.image?`<img src="${p.image}" alt="${esc(p.name)}">`:`<div class="placeholder"><div class="placeholder-icon">🏌️</div><div class="placeholder-text">No Image</div></div>`}
+      </div>
+      <div class="card-body" onclick="openDetail(${p.id})">
+        <p class="card-region">${esc(p.region)}</p>
+        <h3 class="card-title">${esc(p.name)}</h3>
+        <p class="card-desc">${esc(p.description||'')}</p>
+        <div class="card-footer">
+          <div><div class="price-vnd"><span class="cur">₫</span>${fV(p.priceVND)}</div><div class="price-krw"><span class="cur">₩</span>${fK(p.priceKRW)}</div></div>
+        </div>
+      </div>
+    </div>`).join('');
+  updateStats();
+}
+
+/* PRODUCT DETAIL */
+function openDetail(id){
+  const p=products.find(x=>x.id===id); if(!p) return;
+  $('detailImage').innerHTML=p.image?`<img src="${p.image}" alt="${esc(p.name)}">`:`<div class="placeholder" style="height:100%"><div class="placeholder-icon">🏌️</div></div>`;
+  let meta='';
+  if(p.meta&&Object.keys(p.meta).length) meta=`<div class="modal-meta">${Object.entries(p.meta).map(([k,v])=>`<div class="modal-meta-row"><span class="modal-meta-label">${esc(k)}</span><span class="modal-meta-value">${esc(v)}</span></div>`).join('')}</div>`;
+  $('detailContent').innerHTML=`<p class="modal-region">${esc(p.region)}</p><h2 class="modal-title">${esc(p.name)}</h2><p class="modal-desc">${esc(p.description||'')}</p><div class="modal-prices"><div class="modal-price-vnd"><span class="cur">₫ </span>${fV(p.priceVND)}</div><div class="modal-price-krw"><span class="cur">₩ </span>${fK(p.priceKRW)}</div></div>${meta}`;
+  openOL('detailOverlay');
+}
+function closeDetail(){ closeOL('detailOverlay'); }
+
+/* PRODUCT FORM */
+function openForm(editId){
+  if(!isAdmin){handleLoginToggle();return;}
+  uploadedImg='';
+  const isEdit=editId!==undefined;
+  if(isEdit){
+    const p=products.find(x=>x.id===editId); if(!p) return;
+    $('formTitle').textContent='상품 수정'; $('editId').value=editId;
+    $('fName').value=p.name||''; $('fRegion').value=p.region||'박닌';
+    $('fVND').value=p.priceVND||''; $('fKRW').value=p.priceKRW||'';
+    $('fDesc').value=p.description||''; $('fBadge').value=p.badge||'';
+    $('fMeta').value=p.meta?Object.entries(p.meta).map(([k,v])=>`${k}:${v}`).join(', '):'';
+    uploadedImg=p.image||''; if(p.image)setUP(p.image); else resetUP();
+  } else {
+    $('formTitle').textContent='상품 등록'; $('editId').value='';
+    ['fName','fVND','fKRW','fDesc','fBadge','fMeta'].forEach(i=>$(i).value='');
+    $('fRegion').value=activeRegion!=='전체'?activeRegion:'박닌'; resetUP();
+  }
+  openOL('formOverlay');
+}
+function closeForm(){ closeOL('formOverlay'); }
+function setUP(src){ const a=$('uploadArea'); a.classList.add('has-image'); a.innerHTML=`<img src="${src}"><input type="file" id="imageInput" accept="image/*" onchange="handleImage(event)">`; }
+function resetUP(){ const a=$('uploadArea'); a.classList.remove('has-image'); a.innerHTML=`<div class="u-icon">🏌️</div><div class="u-text">이미지 업로드</div><div class="u-hint">JPG, PNG, WEBP</div><input type="file" id="imageInput" accept="image/*" onchange="handleImage(event)">`; }
+async function handleImage(e){ const f=e.target.files[0]; if(!f) return; const r=new FileReader(); r.onload=async ev=>{uploadedImg=await resizeImage(ev.target.result);setUP(uploadedImg);}; r.readAsDataURL(f); }
+async function saveProduct(){
+  const name=$('fName').value.trim(); if(!name){toast('상품명을 입력해주세요');return;}
+  const region=$('fRegion').value, priceVND=parseInt($('fVND').value)||0, priceKRW=parseInt($('fKRW').value)||0;
+  const description=$('fDesc').value.trim(), badge=$('fBadge').value.trim();
+  let meta={};
+  $('fMeta').value.trim().split(',').forEach(pair=>{const[k,...rest]=pair.split(':');if(k.trim()&&rest.length)meta[k.trim()]=rest.join(':').trim();});
+  const eid=$('editId').value;
+  if(eid){ const idx=products.findIndex(p=>p.id===parseInt(eid)); if(idx>-1){products[idx]={...products[idx],name,region,priceVND,priceKRW,description,badge,meta,image:uploadedImg};toast('수정 완료');} }
+  else{ products.push({id:nid(products),name,region,priceVND,priceKRW,description,badge,meta,image:uploadedImg}); toast('등록 완료'); }
+  await saveAll(); renderTabs(); renderGrid(); closeForm();
+}
+
+/* BULK */
+function openBulk(){ if(!isAdmin){handleLoginToggle();return;} bulkFiles=[]; $('bulkPreview').innerHTML=''; $('bulkCount').textContent=''; $('bulkVND').value=''; $('bulkKRW').value=''; $('bulkRegion').value=activeRegion!=='전체'?activeRegion:'박닌'; $('bulkInput').value=''; openOL('bulkOverlay'); }
+function closeBulk(){ closeOL('bulkOverlay'); }
+function handleBulkImages(e){ const files=Array.from(e.target.files); let loaded=0; bulkFiles=[]; files.forEach(f=>{const r=new FileReader(); r.onload=async ev=>{const res=await resizeImage(ev.target.result); bulkFiles.push({name:f.name.replace(/\.[^.]+$/,''),data:res}); loaded++; if(loaded===files.length)renderBP();}; r.readAsDataURL(f);}); }
+function renderBP(){ $('bulkPreview').innerHTML=bulkFiles.map((f,i)=>`<div class="bulk-preview-item"><img src="${f.data}"><button class="bp-remove" onclick="rmBP(${i})">✕</button></div>`).join(''); $('bulkCount').textContent=bulkFiles.length+'개 선택됨'; }
+function rmBP(i){ bulkFiles.splice(i,1); renderBP(); }
+async function saveBulk(){ if(!bulkFiles.length){toast('이미지를 선택해주세요');return;} const region=$('bulkRegion').value, vnd=parseInt($('bulkVND').value)||0, krw=parseInt($('bulkKRW').value)||0; let id=nid(products); bulkFiles.forEach(f=>products.push({id:id++,name:f.name,region,priceVND:vnd,priceKRW:krw,description:'',badge:'',meta:{},image:f.data})); await saveAll(); renderTabs(); renderGrid(); toast(bulkFiles.length+'개 등록 완료'); closeBulk(); }
+
+/* CONFIRM */
+function confirmDelProduct(id){ confirmCb=async()=>{products=products.filter(p=>p.id!==id);await saveAll();renderTabs();renderGrid();toast('삭제 완료');}; $('confirmMsg').textContent='이 상품을 삭제하시겠습니까?'; openOL('confirmOverlay'); }
+function confirmDelPost(id){ confirmCb=async()=>{posts=posts.filter(p=>p.id!==id);await saveAll();closePostDetail();renderBoard();updateStats();toast('게시글 삭제 완료');}; $('confirmMsg').textContent='이 게시글을 삭제하시겠습니까?'; openOL('confirmOverlay'); }
+function confirmDelComment(postId,cId){ confirmCb=async()=>{const p=posts.find(x=>x.id===postId);if(p){p.comments=p.comments.filter(c=>c.id!==cId);await saveAll();renderPostDetail(postId);toast('댓글 삭제 완료');}}; $('confirmMsg').textContent='이 댓글을 삭제하시겠습니까?'; openOL('confirmOverlay'); }
+function closeConfirm(){ closeOL('confirmOverlay'); confirmCb=null; }
+$('confirmYes').addEventListener('click',async()=>{ if(confirmCb) await confirmCb(); closeConfirm(); });
+
+/* BOARD */
+function openWrite(editId=null){
+  editingPostId=editId; postImages=[];
+  if(editId){ const p=posts.find(x=>x.id===editId); if(!p)return; $('writeTitle').textContent='게시글 수정'; $('wCat').value=p.category||'일반'; $('wTitle').value=p.title; $('wAuthor').value=p.author; $('wBody').value=p.body; $('wPw').value=''; postImages=p.images?[...p.images]:[]; }
+  else{ $('writeTitle').textContent='글쓰기'; ['wTitle','wAuthor','wBody','wPw'].forEach(i=>$(i).value=''); $('wCat').value='일반'; }
+  renderPostImgPreview(); openOL('writeOverlay'); setTimeout(()=>$('wTitle').focus(),200);
+}
+function closeWrite(){ closeOL('writeOverlay'); editingPostId=null; }
+
+async function savePost(){
+  const title=$('wTitle').value.trim(), author=$('wAuthor').value.trim(), body=$('wBody').value.trim(), pw=$('wPw').value, category=$('wCat').value;
+  if(!title){toast('제목을 입력해주세요');return;}
+  if(!author){toast('작성자를 입력해주세요');return;}
+  if(!body){toast('내용을 입력해주세요');return;}
+  if(editingPostId){
+    const p=posts.find(x=>x.id===editingPostId); if(!p)return;
+    if(!isAdmin&&p.password&&p.password!==pw){toast('비밀번호가 틀렸습니다');return;}
+    Object.assign(p,{title,author,body,category,images:postImages,edited:Date.now()});
+    toast('수정 완료');
+  } else {
+    posts.unshift({id:nid(posts),title,author,body,category,password:pw,pinned:isAdmin&&category==='공지',date:Date.now(),views:0,comments:[],images:postImages});
+    toast('게시글이 등록되었습니다');
+  }
+  await saveAll(); renderBoard(); updateStats(); closeWrite();
+}
+
+function renderBoard(){
+  const pinned=posts.filter(p=>p.pinned), normal=posts.filter(p=>!p.pinned);
+  const total=Math.ceil(normal.length/PER_PAGE), page=Math.min(currentPage,Math.max(1,total));
+  const slice=normal.slice((page-1)*PER_PAGE,page*PER_PAGE);
+  const all=[...pinned,...slice];
+  const list=$('postList');
+  if(!all.length){ list.innerHTML=`<div class="board-empty"><span class="e-icon">💬</span>아직 게시글이 없습니다.<br>첫 번째 글을 남겨보세요!</div>`; $('boardPagination').innerHTML=''; return; }
+  list.innerHTML=all.map(p=>`
+    <div class="post-item${p.pinned?' pinned':''}" onclick="viewPost(${p.id})">
+      <span class="post-pin">${p.pinned?'📌':esc(p.category||'일반')}</span>
+      <div class="post-main">
+        <div class="post-title-text">${esc(p.title)}${(p.images&&p.images.length)?`<span style="color:var(--accent-warm);font-size:11px;margin-left:5px">📷</span>`:''}${(p.comments&&p.comments.length)?`<span style="color:var(--accent-light);font-size:12px;margin-left:5px">[${p.comments.length}]</span>`:''}</div>
+        <div class="post-meta"><span>${esc(p.author)}</span><span>${fD(p.date)}</span></div>
+      </div>
+      <span class="post-views">👁 ${p.views||0}</span>
+    </div>`).join('');
+  let pag=''; for(let i=1;i<=total;i++) pag+=`<button class="page-btn${i===page?' active':''}" onclick="goPage(${i})">${i}</button>`;
+  $('boardPagination').innerHTML=pag;
+}
+
+function goPage(p){ currentPage=p; renderBoard(); }
+
+function viewPost(id){
+  const p=posts.find(x=>x.id===id); if(!p)return;
+  p.views=(p.views||0)+1; saveAll();
+  currentPostId=id; renderPostDetail(id); openOL('postDetailOverlay');
+}
+function closePostDetail(){ closeOL('postDetailOverlay'); currentPostId=null; }
+
+function renderPostDetail(id){
+  const p=posts.find(x=>x.id===id); if(!p)return;
+  const adminBtns=isAdmin?`<button onclick="openWrite(${p.id})" style="font-size:12px;color:var(--accent);background:none;border:none;cursor:pointer;margin-right:6px">수정</button><button onclick="confirmDelPost(${p.id})" style="font-size:12px;color:var(--danger);background:none;border:none;cursor:pointer">삭제</button>`:'';
+  const imgHtml=(p.images&&p.images.length)?`<div class="post-d-images">${p.images.map(src=>`<img src="${src}" onclick="openLightbox(this.src)" alt="첨부이미지">`).join('')}</div>`:'';
+  const comments=(p.comments||[]).map(c=>`<div class="comment-item"><div class="comment-head"><span class="comment-author">${esc(c.author)}</span><span class="comment-date">${fD(c.date)}<button class="comment-del-btn" onclick="confirmDelComment(${p.id},${c.id})">✕</button></span></div><div class="comment-body">${esc(c.body)}</div></div>`).join('');
+  $('postDetailContent').innerHTML=`
+    <div style="padding-right:30px">
+      <div class="post-d-cat">${esc(p.category||'일반')}</div>
+      <h2 class="post-d-title">${esc(p.title)}</h2>
+      <div class="post-d-meta"><span>✍️ ${esc(p.author)}</span><span>🕐 ${fD(p.date)}</span><span>👁 ${p.views||0}</span>${p.edited?`<span style="color:var(--accent-warm);font-size:10px">(수정됨)</span>`:''}<span style="margin-left:auto">${adminBtns}</span></div>
+      <div class="post-d-body">${esc(p.body)}</div>
+      ${imgHtml}
+      <div class="comment-section">
+        <h4>댓글 ${(p.comments||[]).length}개</h4>
+        <div class="comment-list">${comments||'<p style="color:var(--text-dim);font-size:13px">아직 댓글이 없습니다</p>'}</div>
+        <div class="comment-form">
+          <div class="comment-form-row">
+            <input type="text" id="cAuthor_${id}" placeholder="이름" maxlength="20" style="flex:1">
+            <input type="password" id="cPw_${id}" placeholder="비밀번호" style="width:110px">
+          </div>
+          <textarea id="cBody_${id}" placeholder="댓글을 입력하세요" style="min-height:60px"></textarea>
+          <div style="display:flex;justify-content:flex-end"><button class="btn btn-primary" style="padding:8px 16px;font-size:12px" onclick="addComment(${id})">댓글 등록</button></div>
+        </div>
+      </div>
+    </div>`;
+}
+
+async function addComment(postId){
+  const author=$(`cAuthor_${postId}`)?.value.trim(), body=$(`cBody_${postId}`)?.value.trim();
+  if(!author){toast('이름을 입력해주세요');return;}
+  if(!body){toast('댓글을 입력해주세요');return;}
+  const p=posts.find(x=>x.id===postId); if(!p)return;
+  if(!p.comments) p.comments=[];
+  p.comments.push({id:nid(p.comments),author,body,date:Date.now()});
+  await saveAll(); renderPostDetail(postId); renderBoard(); toast('댓글이 등록되었습니다');
+}
+
+/* POST IMAGES */
+function handlePostImages(e){
+  const files=Array.from(e.target.files), remaining=5-postImages.length;
+  if(remaining<=0){toast('최대 5장까지 첨부 가능합니다');return;}
+  const toLoad=files.slice(0,remaining); let loaded=0;
+  toLoad.forEach(f=>{const r=new FileReader(); r.onload=async ev=>{postImages.push(await resizeImage(ev.target.result,1200)); loaded++; if(loaded===toLoad.length)renderPostImgPreview();}; r.readAsDataURL(f);});
+  e.target.value='';
+}
+function renderPostImgPreview(){ const el=$('postImgPreview'); if(!el)return; el.innerHTML=postImages.map((src,i)=>`<div class="post-img-thumb"><img src="${src}"><button class="rm" onclick="removePostImg(${i})">✕</button></div>`).join(''); }
+function removePostImg(i){ postImages.splice(i,1); renderPostImgPreview(); }
+
+/* LIGHTBOX */
+function openLightbox(src){ $('lightboxImg').src=src; $('lightbox').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeLightbox(){ $('lightbox').classList.remove('open'); document.body.style.overflow=''; }
+
+/* BACKDROP CLOSE */
+['detailOverlay','formOverlay','bulkOverlay','loginOverlay','confirmOverlay','writeOverlay','postDetailOverlay'].forEach(id=>{
+  $(id).addEventListener('click',function(e){
+    if(e.target!==this)return;
+    closeOL(id);
+    if(id==='writeOverlay') editingPostId=null;
+    if(id==='postDetailOverlay') currentPostId=null;
+    if(id==='confirmOverlay') confirmCb=null;
+  });
+});
+document.addEventListener('keydown',e=>{
+  if(e.key!=='Escape')return;
+  ['detailOverlay','formOverlay','bulkOverlay','loginOverlay','confirmOverlay','writeOverlay','postDetailOverlay'].forEach(closeOL);
+  editingPostId=null; currentPostId=null; confirmCb=null; closeLightbox();
+});
+
+/* INIT */
+(async()=>{
+  // embedded data 로드 (다운받은 HTML 재오픈 시)
+  if(window.__EMBEDDED__){
+    if(window.__EMBEDDED__.products?.length) products=window.__EMBEDDED__.products;
+    if(window.__EMBEDDED__.posts?.length)    posts=window.__EMBEDDED__.posts;
+    await saveAll();
+  } else {
+    await loadAll();
+  }
+  renderTabs();
+  renderGrid();
+  updateStats();
+  setTimeout(initReveal,100);
+})();
+</script>
+</body>
+</html>
